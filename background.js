@@ -22,6 +22,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
   
   updateTabList();
+  
 });
 
 function updateTabList() {
@@ -43,19 +44,27 @@ function updateTabList() {
       console.log("title: " + tab.title);
       console.log("isCurrent: " + isCurrent);
       console.log("currentTabId: " + currentTabId);
+      console.log("windowId: " + tab.windowId);
 
-      // TODO Moeglicherweise stimmt der neue Tabtitel nicht. Falls er nicht stimmt muss man 
+      // Moeglicherweise stimmt der neue Tabtitel nicht. Falls er nicht stimmt muss man 
       // den Wert aus onUpdated param changeInfo.title verwenden
       customTabList.push({
         index: i,
         id: tab.id,
         title: tab.title,
-        isCurrent: isCurrent
+        isCurrent: isCurrent,
+        windowId: tab.windowId
       });
 
-      // TODO Sprung API request here to inform sprung about current tabs
-      // to identify which chrome window is the current one match the currentWindowTitle
-
     }
+    
+    console.log(customTabList);
+
+    $.post(
+      "http://localhost:1234/chrome", 
+      JSON.stringify(customTabList), 
+      function(response) { console.log(response) }, 
+      "json");
+
   });
 }
