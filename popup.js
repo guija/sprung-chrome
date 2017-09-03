@@ -1,18 +1,11 @@
-chrome.tabs.onCreated.addListener(function(tab) {
-  alert("new tab was opened!")
+$(function() {
+
+    // Check if sprung application is working and show correspdonding text
+    $.get(SPRUNG_REST_API + "/test", function(data) {
+        var statusRunning = $(".status-running");
+        var statusNotRunning = $(".status-not-running");
+        statusRunning.show();
+        statusNotRunning.hide();
+    });
+
 });
-
-/*
-function getCurrentTabUrl(callback) {
-  var queryInfo = {
-    currentWindow: true
-  };
-
-  chrome.tabs.query(queryInfo, function(tabs) {
-    for(var i = 0; i < tabs.length; i++) {
-      console.log("TAB URL:" + tabs)
-    }
-  });
-
-}
-*/

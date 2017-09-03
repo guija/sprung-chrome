@@ -60,11 +60,13 @@ function updateTabList() {
     
     console.log(customTabList);
 
+
     $.post(
-      "http://localhost:1234/chrome", 
+      SPRUNG_REST_API + "/chrome", 
       JSON.stringify(customTabList), 
       function(response) { console.log(response) }, 
-      "json");
+      "json"
+    );
 
   });
 }
