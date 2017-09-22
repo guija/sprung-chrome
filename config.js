@@ -1,1 +1,1 @@
-var SPRUNG_REST_API = "http://localhost:1234";
+var SPRUNG_REST_API = "http://localhost:8212";
