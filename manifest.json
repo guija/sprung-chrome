@@ -3,7 +3,7 @@
 
   "name": "Sprung for Chrome",
   "description": "Sprung for Chrome",
-  "version": "1.0",
+  "version": "2.0",
 
   "browser_action": {
     "default_icon": "spring.png",
